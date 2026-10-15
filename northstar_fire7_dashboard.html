@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090e18">
+<title>Northstar | Weather · Leafs · News</title>
+<style>
+:root{--bg:#090e18;--panel:#121b2b;--panel2:#182438;--line:#27364b;--text:#f3f7ff;--muted:#9bacc4;--blue:#4ea1ff;--gold:#ffd36a;--green:#74e0bd}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#142542 0%,var(--bg) 48%);color:var(--text);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:16px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:3px 0 18px}.brand{display:flex;align-items:center;gap:10px}.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#5ab4ff,#2455b8);display:grid;place-items:center;font-size:24px;box-shadow:0 8px 28px #2479df33}.eyebrow{font-size:11px;letter-spacing:.16em;color:var(--muted);font-weight:800}.brand h1{font-size:21px;line-height:1.1;margin:2px 0 0;letter-spacing:-.03em}.clock{text-align:right;color:var(--muted);font-size:12px}.clock strong{display:block;color:var(--text);font-size:16px}
+.nav{display:flex;gap:8px;margin:0 0 16px;overflow:auto}.nav a{white-space:nowrap;color:#d8e6fb;text-decoration:none;border:1px solid var(--line);background:#101a2a;border-radius:999px;padding:8px 12px;font-size:13px}
+.section{margin:0 0 18px;scroll-margin-top:12px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:8px;margin:0 2px 10px}.section-head h2{font-size:19px;letter-spacing:-.02em;margin:0}.section-head p{font-size:12px;color:var(--muted);margin:3px 0 0}.pill{border:1px solid #31435b;color:#bcdcff;background:#172840;border-radius:999px;padding:5px 9px;font-size:11px;white-space:nowrap}
+.card{background:linear-gradient(145deg,#152136,#101827);border:1px solid var(--line);border-radius:20px;padding:15px;box-shadow:0 12px 35px #00000018}.weather-main{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.place{color:var(--muted);font-size:13px}.temp{font-size:55px;font-weight:750;letter-spacing:-.07em;line-height:1.05}.condition{font-size:15px;color:#d7e5f8}.hi-lo{font-size:12px;color:var(--muted);margin-top:5px}.big-weather{font-size:62px;filter:drop-shadow(0 0 16px #80bfff55);animation:float 3.2s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+.weather-bottom{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}.stat{background:#0d1522;border:1px solid #23334a;border-radius:13px;padding:10px}.stat span{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:15px}.hourly{display:flex;gap:8px;overflow:auto;padding:12px 0 2px;margin-top:8px}.hour{flex:0 0 68px;text-align:center;background:#0d1522;border:1px solid #23334a;border-radius:13px;padding:10px 6px}.hour small{color:var(--muted);font-size:11px}.hour .ico{font-size:23px;margin:6px 0}.hour strong{font-size:13px}.forecast{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.day{background:#0d1522;border:1px solid #23334a;border-radius:13px;padding:10px 7px;text-align:center}.day small{display:block;color:var(--muted)}.day .ico{font-size:22px;margin:4px}
+.score-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px}.score-card{background:#0d1522;border:1px solid #263851;border-radius:16px;padding:13px}.score-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}.scoreline{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}.team{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700}.crest{width:27px;height:27px;border-radius:50%;background:#173d7b;display:grid;place-items:center;color:white;font-size:11px;font-weight:900}.score{font-size:21px;font-weight:800}.game-note{font-size:11px;color:var(--muted);margin-top:9px}.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;border-radius:12px;padding:10px 12px;font-size:12px;font-weight:750;color:white;background:#1b3454;border:1px solid #304d70}.btn.primary{background:#1766bf;border-color:#3888e8}.news-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.story{overflow:hidden;display:flex;flex-direction:column;min-height:170px;text-decoration:none;color:inherit;background:#101a2a;border:1px solid var(--line);border-radius:16px}.thumb{height:95px;display:grid;place-items:center;font-size:38px;position:relative;overflow:hidden;background:linear-gradient(135deg,#1c3a60,#172032)}.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#101a2a55,transparent)}.thumb .tag{position:absolute;z-index:1;bottom:7px;left:8px;font-size:10px;font-weight:800;background:#08101bcc;border:1px solid #ffffff22;border-radius:6px;padding:4px 6px;letter-spacing:.08em}.story-body{padding:10px;display:flex;flex-direction:column;gap:5px;flex:1}.story h3{font-size:13px;line-height:1.3;margin:0}.story p{font-size:11px;color:var(--muted);margin:0}.story .open{font-size:11px;color:#8dc5ff;font-weight:800;margin-top:auto;padding-top:5px}.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.video{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#101a2a}.video-thumb{height:82px;display:grid;place-items:center;background:linear-gradient(135deg,#183d6b,#0d1727);font-size:31px;position:relative}.play{position:absolute;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#ffffffec;color:#15304e;font-size:15px;padding-left:2px}.video strong{display:block;padding:9px;font-size:12px;line-height:1.3}.foot{text-align:center;color:#73849d;font-size:10px;padding:8px 8px 22px}.loading{color:var(--muted);font-size:12px}.error{color:#ffcc83}.refresh{background:none;border:1px solid var(--line);color:#c5d8f2;border-radius:10px;padding:7px 9px;font-size:11px}
+@media(min-width:760px){.wrap{padding:22px}.temp{font-size:65px}.weather-main{padding:8px 6px}.news-grid{grid-template-columns:repeat(4,1fr)}.story{min-height:200px}.thumb{height:125px}.video-grid{grid-template-columns:repeat(4,1fr)}.video-thumb{height:110px}.score-wrap{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:360px){.wrap{padding:10px}.card{padding:11px}.temp{font-size:47px}.big-weather{font-size:52px}.section-head h2{font-size:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="mark">✦</div><div><div class="eyebrow">YOUR DAILY BRIEFING</div><h1>NORTHSTAR</h1></div></div>
+  <div class="clock"><strong id="clock">Loading time…</strong><span id="date">Getting today's date</span></div>
+</header>
+<nav class="nav"><a href="#weather">🌦 Weather</a><a href="#hockey">🏒 Leafs</a><a href="#news">▶ News & video</a></nav>
+
+<section class="section" id="weather">
+  <div class="section-head"><div><h2>Weather outside</h2><p id="weather-place">Alliston, Ontario · Today's outlook</p></div><span class="pill">LIVE FORECAST</span></div>
+  <div class="card">
+    <div class="weather-main">
+      <div><div class="place" id="weather-label">CURRENT CONDITIONS</div><div class="temp" id="temp">--°</div><div class="condition" id="condition">Fetching the sky…</div><div class="hi-lo" id="hi-lo">Today's high / low: -- / --</div></div>
+      <div class="big-weather" id="weather-icon">🌤️</div>
+    </div>
+    <div class="weather-bottom">
+      <div class="stat"><span>💨 WIND</span><strong id="wind">-- km/h</strong></div>
+      <div class="stat"><span>💧 HUMIDITY</span><strong id="humidity">--%</strong></div>
+    </div>
+    <div class="section-head" style="margin:16px 0 0"><div><h2 style="font-size:14px">The next few hours</h2><p>Temperature and sky conditions</p></div><button class="refresh" onclick="loadWeather()">↻ Refresh</button></div>
+    <div class="hourly" id="hourly"><span class="loading">Loading hourly forecast…</span></div>
+    <div class="forecast" id="forecast"></div>
+    <div class="actions"><a class="btn" href="https://www.theweathernetwork.com/ca/weather/ontario/alliston" target="_blank" rel="noopener">Open detailed forecast ↗</a></div>
+  </div>
+</section>
+
+<section class="section" id="hockey">
+  <div class="section-head"><div><h2>Leafs central</h2><p>Scores, recent results and the next puck drop</p></div><span class="pill">TORONTO 🍁</span></div>
+  <div class="card">
+    <div id="games" class="score-wrap"><div class="score-card"><div class="loading">Checking the NHL scoreboard…</div></div></div>
+    <div class="actions">
+      <a class="btn primary" href="https://www.nhl.com/mapleleafs/video" target="_blank" rel="noopener">▶ Latest Leafs highlights</a>
+      <a class="btn" href="https://www.nhl.com/mapleleafs/schedule" target="_blank" rel="noopener">Full schedule & scores ↗</a>
+    </div>
+    <div class="game-note" id="hockey-note">Live scores load from the NHL when available. If the feed is unavailable, use the official links above.</div>
+  </div>
+</section>
+
+<section class="section" id="news">
+  <div class="section-head"><div><h2>Newsroom</h2><p>Visual headlines, local updates and watchable stories</p></div><span class="pill">WATCH & READ</span></div>
+  <div class="news-grid">
+    <a class="story" href="https://www.cp24.com/video/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#b52a36,#3a1527)">📺<span class="tag">TORONTO</span></div><div class="story-body"><h3>CP24: Toronto & GTA video</h3><p>Local headlines, breaking news and live coverage.</p><span class="open">Watch CP24 ↗</span></div></a>
+    <a class="story" href="https://www.cbc.ca/news" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#174e85,#10223d)">🇨🇦<span class="tag">CANADA</span></div><div class="story-body"><h3>CBC News</h3><p>National headlines, explainers and video reports.</p><span class="open">Explore CBC ↗</span></div></a>
+    <a class="story" href="https://globalnews.ca/" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#276c7a,#15283b)">🌎<span class="tag">WORLD</span></div><div class="story-body"><h3>Global News</h3><p>Canadian and international stories in a visual feed.</p><span class="open">Explore Global ↗</span></div></a>
+    <a class="story" href="https://www.youtube.com/results?search_query=latest+world+news+video" target="_blank" rel="noopener"><div class="thumb" style="background:linear-gradient(135deg,#6b2837,#241525)">▶️<span class="tag">VIDEO</span></div><div class="story-body"><h3>World news video</h3><p>Video reports and current-affairs clips.</p><span class="open">Watch videos ↗</span></div></a>
+  </div>
+  <div class="section-head" style="margin-top:16px"><div><h2 style="font-size:16px">Watch next</h2><p>Quick links to fresh video feeds</p></div></div>
+  <div class="video-grid">
+    <a class="video" href="https://www.youtube.com/results?search_query=Toronto+Maple+Leafs+highlights+latest" target="_blank" rel="noopener"><div class="video-thumb">🏒<span class="play">▶</span></div><strong>Latest Leafs highlights</strong></a>
+    <a class="video" href="https://www.youtube.com/results?search_query=CP24+Toronto+news+today" target="_blank" rel="noopener"><div class="video-thumb" style="background:linear-gradient(135deg,#842d37,#241525)">📡<span class="play">▶</span></div><strong>CP24 news clips</strong></a>
+    <a class="video" href="https://www.youtube.com/results?search_query=Canada+news+today+video" target="_blank" rel="noopener"><div class="video-thumb" style="background:linear-gradient(135deg,#254f87,#152238)">🍁<span class="play">▶</span></div><strong>Canada today</strong></a>
+    <a class="video" href="https://www.youtube.com/results?search_query=world+news+latest+video" target="_blank" rel="noopener"><div class="video-thumb" style="background:linear-gradient(135deg,#3d6570,#172438)">🌐<span class="play">▶</span></div><strong>World news clips</strong></a>
+  </div>
+</section>
+<div class="foot">NORTHSTAR · Free dashboard · Weather by Open-Meteo · Scores from NHL endpoints<br>News and video links open their original publishers. Some sites may show ads.</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+function tick(){const n=new Date();$('clock').textContent=n.toLocaleTimeString('en-CA',{hour:'numeric',minute:'2-digit'});$('date').textContent=n.toLocaleDateString('en-CA',{weekday:'short',month:'short',day:'numeric'});}
+tick();setInterval(tick,30000);
+function weatherIcon(code,isDay=true){if(code===0)return isDay?'☀️':'🌙';if([1,2].includes(code))return isDay?'🌤️':'☁️';if(code===3)return '☁️';if([45,48].includes(code))return '🌫️';if([51,53,55,56,57].includes(code))return '🌦️';if([61,63,65,66,67,80,81,82].includes(code))return '🌧️';if([71,73,75,77,85,86].includes(code))return '❄️';if([95,96,99].includes(code))return '⛈️';return '🌡️'}
+function weatherText(code){if(code===0)return 'Clear skies';if([1,2].includes(code))return 'Mostly clear';if(code===3)return 'Cloudy';if([45,48].includes(code))return 'Foggy';if([51,53,55,56,57].includes(code))return 'Drizzle';if([61,63,65,66,67,80,81,82].includes(code))return 'Rain showers';if([71,73,75,77,85,86].includes(code))return 'Snow / flurries';if([95,96,99].includes(code))return 'Thunderstorms';return 'Current conditions'}
+async function loadWeather(){
+ const lat=44.15,lon=-79.87;
+ try{
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code,precipitation_probability&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=celsius&wind_speed_unit=kmh&timezone=America%2FToronto&forecast_days=4`;
+  const r=await fetch(url);if(!r.ok)throw Error('Weather service unavailable');const d=await r.json(),c=d.current,day=d.daily;
+  $('temp').textContent=Math.round(c.temperature_2m)+'°';$('condition').textContent=weatherText(c.weather_code)+' · Feels like '+Math.round(c.apparent_temperature)+'°';$('weather-icon').textContent=weatherIcon(c.weather_code,!!c.is_day);$('hi-lo').textContent=`Today's high ${Math.round(day.temperature_2m_max[0])}° · low ${Math.round(day.temperature_2m_min[0])}°`;$('wind').textContent=Math.round(c.wind_speed_10m)+' km/h';$('humidity').textContent=Math.round(c.relative_humidity_2m)+'%';
+  const now=new Date();let idx=d.hourly.time.findIndex(t=>new Date(t).getTime()>=now.getTime());if(idx<0)idx=0;
+  $('hourly').innerHTML='';for(let i=idx;i<Math.min(idx+8,d.hourly.time.length);i++){let time=new Date(d.hourly.time[i]).toLocaleTimeString('en-CA',{hour:'numeric'});$('hourly').insertAdjacentHTML('beforeend',`<div class="hour"><small>${time}</small><div class="ico">${weatherIcon(d.hourly.weather_code[i],true)}</div><strong>${Math.round(d.hourly.temperature_2m[i])}°</strong><small>💧 ${d.hourly.precipitation_probability[i]??0}%</small></div>`)}
+  $('forecast').innerHTML='';for(let i=1;i<4;i++){let date=new Date(day.time[i]+'T12:00:00');let name=date.toLocaleDateString('en-CA',{weekday:'short'});$('forecast').insertAdjacentHTML('beforeend',`<div class="day"><small>${name}</small><div class="ico">${weatherIcon(day.weather_code[i])}</div><strong>${Math.round(day.temperature_2m_max[i])}° / ${Math.round(day.temperature_2m_min[i])}°</strong></div>`)}
+ }catch(e){$('condition').textContent='Could not load live weather';$('hi-lo').textContent='Check Wi-Fi, then refresh.';$('hourly').innerHTML='<span class="loading error">Weather feed unavailable. Tap refresh or use the detailed forecast link.</span>'}
+}
+async function loadGames(){
+ try{
+  const r=await fetch('https://api-web.nhle.com/v1/club-schedule-season/TOR/now');if(!r.ok)throw Error('NHL feed unavailable');const d=await r.json();let games=(d.games||[]).slice().sort((a,b)=>new Date(b.gameDate)-new Date(a.gameDate)).slice(0,3);
+  if(!games.length)throw Error('No games returned');
+  $('games').innerHTML='';for(const g of games){const isHome=g.homeTeam.abbrev==='TOR',tor=isHome?g.homeTeam:g.awayTeam,opp=isHome?g.awayTeam:g.homeTeam;let status=g.gameState||'';let date=new Date(g.startTimeUTC||g.gameDate+'T19:00:00Z');let label=(status==='LIVE'||status==='CRIT')?'LIVE NOW':(['FINAL','OFF'].includes(status)?'FINAL':date.toLocaleDateString('en-CA',{month:'short',day:'numeric'}));let score=(tor.score==null||opp.score==null)?'–':`${tor.score}–${opp.score}`;let note=(status==='LIVE'||status==='CRIT')?'Game in progress':(['FINAL','OFF'].includes(status)?'Final score':(g.venue?.default?'At '+g.venue.default:'Upcoming game'));
+  $('games').insertAdjacentHTML('beforeend',`<div class="score-card"><div class="score-top"><span>${label}</span><span>${isHome?'HOME':'AWAY'}</span></div><div class="scoreline"><div class="team"><span class="crest">TOR</span><span>TOR</span></div><strong class="score">${score}</strong><div class="team" style="justify-content:flex-end"><span>${opp.abbrev}</span><span class="crest" style="background:#26364b">${opp.abbrev}</span></div></div><div class="game-note">${note} · ${g.gameDate||''}</div></div>`)}
+  $('hockey-note').textContent='Latest games from the NHL schedule feed. For live play-by-play and official video, use the NHL links.';
+ }catch(e){$('games').innerHTML='<div class="score-card"><div class="loading">Live scoreboard could not load in this browser.</div><div class="game-note">The official NHL schedule link below has current scores and results.</div></div>'}
+}
+loadWeather();loadGames();setInterval(loadWeather,30*60*1000);setInterval(loadGames,5*60*1000);
+</script>
+</body></html>
